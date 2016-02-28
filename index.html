@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+    <link href='http://fonts.googleapis.com/css?family=Handlee' rel='stylesheet' type='text/css'>
+    <link href="index.css" type="text/css" rel="stylesheet" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="pick.js"></script>
+
+    <title>Whose pick is it anyway?</title>
+  </head>
+  
+  <body ng-app="lunchpick" ng-controller="lunchCtrl">
+
+    <div class="all">
+      <div class="logo">
+	Whose Lunch Pick Is It?
+      </div>
+
+      <div class="break"></div>
+
+      <div class="lunchlist">
+	<ul class="lunchlist">
+	  <li ng-repeat="p in people | orderBy:'name'" 
+	      ng-class="( !editingPeople && selected === p.id ) ? 'selected' : ''">
+	    <span ng-hide="editingPeople">{{p.name}}</span>
+	    <span ng-show="editingPeople">
+	      <input ng-model="editNames[p.id]" type="text" class="editperson"></input>
+	      <input ng-model="editEmails[p.id]" type="text" class="editperson"></input>
+	      <span class="button" ng-click="selectPerson(p.id)"
+		    ng-class="selected === p.id ? 'pressed' : ''">
+		Select
+	      </span>
+	      <span class="button end" ng-click="deletePerson(p.id)"
+		    ng-class="( deleteThings[p.id]) ? 'pressed' : ''">
+		Delete
+	      </span>
+	    </span>
+	    <li><span class="button editperson" ng-show="editingPeople" ng-click="stopEditPeople()">Done</span></li>
+	  </li>
+	</ul>
+      </div>
+
+      <div class="break"></div>
+      
+      <div class="pick">
+	<p>
+	  This week's pick is: 
+	  <span ng-hide="lunchpick&&!editing">
+	    <input ng-model="typedpick" type="text" class="pick autocomplete"></input>
+	    <span class="button" ng-click="updatePick()">Save</span>
+	  </span>
+	  <span ng-show="lunchpick&&!editing">
+	    <span class="pick">{{lunchpick}}</span>
+	    <span ng-show="lunchpick" ng-click="editPick()" class="button">Edit</span>
+	  </span>
+	</p>
+      </div>
+
+      <div class="break"></div>
+
+      <div id="prevButton">
+	<span class="button bottom" ng-click="showPrevious()">Previous picks</span>
+      </div>
+
+      <div id="history" ng-show="previous">
+	<table class="history">
+	  <tr ng-repeat="p in history">
+	    <td>{{p.date}}</td><td>&#9733;</td><td>{{p.name}}</td>
+	  </tr>
+	</table>
+      </div>
+
+      <div id="addButton">
+	<span class="button bottom" ng-hide="adding" ng-click="showAdd()">Add person</span> 
+      </div>
+      
+      <div class="add" ng-show="adding">
+	<p>Add person to rotation:</p>
+	<p>
+	  Name: <input type="text" ng-model="newname" id="newname"></input>
+	</p>
+	<p>
+	  Email: <input type="text" ng-model="newemail" id="newemail"></input>
+	</p>
+	<p>
+	  <span class="button" ng-click="addPerson()">Submit</span> 
+	  <span class="button" ng-click="stopAddPerson()">Cancel</span>
+	</p>
+      </div>
+
+      <div id="editButton">
+	<span class="button bottom" ng-click="editPeople()">Edit people</span> 
+      </div>
+      
+
+    </div>
+
+  </body>
+</html>
+
+

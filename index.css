@@ -1,0 +1,114 @@
+body {
+    background-color: #aa0000;
+    font-family: Helvetica, sans-serif;
+    font-size: 20px;
+    color: #522;
+}
+
+div.lunchlist ul {
+    list-style: none;
+}
+
+div.all {
+    margin-left: auto;
+    margin-right: auto;
+    width:450px;
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 30px;
+    border-radius: 20px 20px 0px 0px;
+    height: 800px;
+    border-left: 10px double #ddd;
+    border-top: 10px double #ddd;
+    border-right: 10px double #ddd;
+    border-bottom: 2px solid #ddd;
+    overflow: hidden;
+}
+
+div.logo {
+    font-family: 'Handlee', sans-serif;
+    width: 100%;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    color: #EBC034;
+}
+
+li.selected {
+  font-weight: bold;
+  border-top: solid 2px #800;
+  border-bottom: solid 2px #800;
+  width: 50px;
+  margin: 5px 0px 5px 0px;
+  padding: 5px 0px 5px 0px;
+  list-style-type: circle;
+}
+
+span.button, input[type="text"]{
+    border: 2px solid #522;
+    padding: 3px 7px 3px 7px;
+    background-color: rgba(255,255,255,0.2);
+    font-size: 18px;
+}
+
+span.button{
+    cursor: pointer;
+    -webkit-user-select: none;
+}
+span.button.pressed {
+    background-color: #933;
+    color: #DBB237;
+}
+span.button:active {
+    color: #EBC034;
+}
+
+span.button.end {
+    margin-left: 5px;
+}
+
+span.pick {
+    color: #EBC034;
+    font-weight: bold;
+}
+
+div.break {
+    border-top: 3px dashed #800;
+    margin: 40px 0px 40px 0px;
+    width: 100%;
+}
+
+input.pick {
+    width: 100px;
+    margin-right:5px;
+}
+
+div#prevButton {
+    margin-bottom: 15px;
+}
+
+div#addButton {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+span.bottom {
+    display:block;
+    width:130px;
+}
+
+div#history {
+    max-height: 175px;
+    overflow: auto;
+}
+
+table.history td {
+    line-height:25px;
+}
+
+input.editperson {
+    width: 100px;
+}
+
+.editperson {
+    margin: 5px 0px 5px 0px;
+}
